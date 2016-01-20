@@ -1,0 +1,183 @@
+# File: X301:~/Docbook/pathagar-docs/bluebook
+<preamble>
+On Sun Jun 17 2012, Sameer Verma and Alex Kleider got together to document
+installation of the Pathagar book server onto a virtual machine. What was
+learned at that session was then applied the following day to do the same
+onto a GlobalScaleTechnologies DreamPlug. These are the notes that 
+resulted.  Consider this all to be licensed under the CreativeCommons
+license.
+</preamble>
+
+<title> Pathagar on a Virtual Machine </title>
+
+<h1> Obtain Server ISO </h1>
+Download ISO Ubuntu Server 12.04 LTS 32 bit version. (Need connectivity.)
+The url keeps changing so using wget might not be the best method.
+
+<h1> Virtual Machine Set Up </h2>
+Run virtual machine: Virtual Box (available for linux, mac and windows.)
+<h2>Create a profile for the virtual image: </h2>
+<steps>
+    VM set up:
+    New => Next
+        Name: vmPathagar, OSType: Linux, Version: Ubuntu
+    Next  1024 RAM  # Can be resized later if needed.
+    Next  check Startup Disk
+          check Create new disk
+    Next  File type: VMDK  # Sameer's choice, VM Ware compatible.
+    Next  Dynamically allocated  # Works well.
+    Next  -accept 8G default
+    Next  -summary
+    Create
+</steps>
+Now have shell of an image with no content.
+<h2> Set it to boot from the server iso: </h2>
+<steps>
+    Menu => Machine Settings
+        Storage
+            check Empty  -pick iso image
+            choose virtual disk => downloads/ubuntu..iso  (open)
+    OK
+</steps>
+
+<h1> Installation </h1>
+<steps>
+    Menu => Start
+        -does an installation, defaults are good for most responses.
+    Some of the choices we made:
+        Hostname: phbs
+        user account: pat    password: <pat's password>
+        time zone: usla (default was correct)
+        use entire disk
+        default: virtual disk partition
+        partition table yes                   OpenSSH
+        Proxy none
+          no automatic updates
+        Base install pluss OpenSSH  (No need for any of the others.)
+        Install GRUB2 to MBR
+        Done - Continue
+    Reboot => installed system ubuntu server which we called vm.pathagar.
+</steps>
+
+<h1> Pathagar Installation </h1>
+You will need an internet connection to install pathagar and all it's
+dependencies.
+<steps>
+    Open Ubuntu server vm.pathagar in VM.
+    phbs login: pat     
+    password: <pat's password>
+</steps>
+This logs you onto ubuntu running in VM.
+If installing Pathagar onto the native OS of a computer (running Debian
+perhaps) every thing would be the same except that you'd have to give
+youself root privileges to run the commands following "sudo".
+<code>
+    $ sudo apt-get update; apt-get upgrade
+    $ sudo apt-get install apache2 libapache2-mod-python libapache2-mod-wsgi
+    $ sudo apt-get install python-django python-sendfile python-django-tagging
+    <comment> 'python-sendfile' should NOT be in the above list! 
+    See Addendum below. </comment>
+    $ sudo apt-get install sqlite git
+    $ sudo apt-get install python-setuptools
+    $ sudo adduser bookserver  <bookserver's password>
+    $ su - bookserver
+</code>
+(Just to be sure run $ pwd and $ whoami to be sure that you are 
+'bookserver' and that the working directory is '/home/bookserver'.)
+<code>
+    $ git clone \
+    git://github.com/git://github.com/johnsensible/django-sendfile.git
+    $ git clone git://github.com/manuq/pathagar
+    $ cd django_sendfile
+    $ sudo python setup.py install
+    $ cd ../pathagar
+</code>
+<steps>
+    Edit settings.py: Lines that need to be changed are provided:
+    <file_contents>
+        ADMINS = {"your name", "your email" }
+        SECRET_KEY = "<add a few characters to what's already there>"
+        # The above is for security: others will know default key.
+        ADMIN_MEDIA_PREFIX = '/images/'
+        MEDIA_URL = '/static_media'
+    </file_contents>
+    Create '/etc/apache2/sites-available/library'; 'library' can be any name.
+    so its contents are (modified after James Simmons,
+    http://en.flossmanuals.net/e-book-enlightenment/the-pathagar-book-server):
+    <file_contents>
+        <VirtualHost *:80>
+            # ServerName sugarlabs.simmons
+            ServerAdmin myemail@gmail.com
+            <Location "/">
+                SetHandler python-program
+                PythonHandler django.core.handlers.modpython
+                SetEnv DJANGO_SETTINGS_MODULE pathagar.settings
+                PythonDebug On
+                PythonPath "['/home/bookserver'] + sys.path"
+            </Location>
+            ErrorLog /var/log/apache2/pathagar-error.log
+            # Possible values include: debug, info, notice, warn, error, crit,
+            # alert, emerg.
+            LogLevel warn
+            CustomLog /var/log/apache2/pathagar-access.log combined
+            ServerSignature On
+        </VirtualHost>
+    </file_contents>
+
+    Then swap 'library' out for the default ('default') as follows:
+</steps>
+<code>
+    # a2ensite library
+    # a2dissite default
+</code>
+
+A word about ownerships and permissions: it has been found that these can
+cause a lot of problems. It seems that the files must be owned by apache's
+run time user and this user must have write privileges to data that the
+program has to be able to change. In general it is advisable for this user
+to NOT have write priviledges for any files that she does not NEED.
+To deal with the above discussed issues, the following is suggested:
+("# .." is equivalent to "$ sudo ..". Debian vs Ubuntu.)
+<code>
+# chown www-data:bookserver -F /home/bookserver/pathagar
+# chmod g+w -R /home/bookserver/pathagar  # Gives privileges to bookserver.
+# chmod u-w -R /home/bookserver/pathagar  # Makes server more secure.
+# cd /home/bookserver/pathagar
+# chmod u+w -R database.db static_media books  # So server can do its job.
+</code>
+
+Apache must be restarted for all these changes to take effect.
+<code>
+# etc/init.d/apache2 restart
+</code>
+
+If I haven't let you down (i.e. given you bad advice) you should have a
+functioning server.  Let's assume that 'dp3' resolves to the server's IP
+address.  Point your browser to http://dp3 and let's hope for the
+best.
+
+Comments are most welcome.  Please direct them to akleider@sonic.net.
+
+<addendum>
+<h3> "sendfile" error </h3>
+For a long time I was troubled by an error: 
+"""
+TypeError at /book/1/download
+sendfile() takes no keyword arguments
+"""
+This was because I had installed 'python-sendfile' instead of
+'django-sendfile'. Installing 'django-sendfile' is not simply a matter of
+running apt-get install django-sendfile. Here's what has to be done. (These
+steps are already incorporated in the instructions privided above.)
+<code>
+# apt-get install python-setuptools
+$ git clone git://github.com/johnsensible/django-sendfile.git
+$ cd django-sendfile
+# python setup.py install
+# rm -R ../django-sendfile  <comment> Not sure this is OK- might want to do
+                          it in order to save some storage space. </comment>
+</code>
+I don't know if leaving python-sendfile installed makes a difference or
+not. I did not purge it and things seem to work fine.
+</addendum>
+

@@ -1,0 +1,35 @@
+
+        Introduction
+
+            Back Ground
+            Orgainzation of the Text
+            Assumptions
+
+        Virtual Machine and OS Installation
+
+            Install Virtual Box
+            Download an Operating System
+            Create a profile for the virtual image
+            Install the Operating System
+
+        Prepare the Server
+        Pathagar Installation
+
+            Bring in Pathagar and its Dependencies
+            Pathagar Configuration
+            Database Initialization
+            Ownerships and Permissions
+            Configuring Apache
+
+        Test the Pathagar Installation
+
+            Bridge VM to Interface
+            Start the Server and Log On to Discover IP
+            Test the Server
+            Check Pathagar Functionality
+            Pathagar Administration 
+
+        Appendix
+
+            Pathagar Preinstalled OVA
+            Request for Comments

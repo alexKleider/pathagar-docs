@@ -1,0 +1,38 @@
+<preface xmlns="http://docbook.org/ns/docbook" 
+        version="5.0"
+
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:id="preface"
+    >
+
+<info>
+    <title>Pathagar Documentation Project</title>
+    <author>
+        <orgname>olpcSF.org</orgname>
+    </author>
+    <copyright>
+        <year>2014</year>
+        <holder>Alex Kleider</holder>
+    </copyright>
+</info>
+
+<formalpara>
+    <title>Copyright Information</title>
+    <para>
+        This material is released under a 
+        <link xlink:href="http://creativecommons.org/licenses">
+        CreativeCommons</link> license.
+    </para>
+</formalpara>
+
+<para>
+    The goal of this document, a project of olpcSF.org, is to provide 
+    helpful documentation of the pathagar book server project and more
+    specifically to help with installation, configuration and usage 
+    of this service software on low energy requiring hardware.  We begin
+    with the DreamPlug but hope eventually to gain and report experience
+    with other platforms such as CuBox, TrimSlice, and perhaps others.
+</para>
+
+</preface>
+

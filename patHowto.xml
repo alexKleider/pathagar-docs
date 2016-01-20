@@ -1,0 +1,23 @@
+<book   xmlns="http://docbook.org/ns/docbook" version='5.0'
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xi="http://www.w3.org/2001/XInclude"
+    >
+<!-- This file (patHowto.xml) serves only to include component files.
+Each included section is to be an article so that it can be
+independently validated.
+Included components will be named using a descriptive word prefaced by
+'pat' and ending in '.xml'
+Add an article (each of which will be one of the following:
+preface, an introductory section or chapter and what ever else)
+as follows:
+
+    <xi:include href="patTopic.xml/>
+
+-->
+
+
+    <xi:include href="patPreface.xml"/>
+
+
+
+</book>

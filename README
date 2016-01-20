@@ -1,0 +1,18 @@
+
+This directory (/home/alex/Docbook/pathagar-docs)
+(with the following repo:
+git checkout https://github.com/alexKleider/pathagar-docs)
+initially contained my write up of how Sameer and I installed pathagar
+on a virtual environment and included in these notes we also covered
+installing onto a dreamplug.
+That write up is  "bluebook.xml" (because my original notes were in a
+blue book.)
+
+As of mid March, 2014, we are beginning a new project documenting the
+currently recommended methods of installing pathagar.  We are beginning
+by detailing how we do this on a dreamplug but may eventually expand
+this to include other platforms.  Currently the CuBox and the TrimSlice
+are on our list of 'other platforms' to study.
+This project is also being written using docbook and the top level file
+is "patHowto.xml".  The plan is for included xml files to all be named
+according to the following format: 'patAnotherSubject.xml'.

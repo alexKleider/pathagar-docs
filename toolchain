@@ -1,0 +1,13 @@
+
+jing docbook.rng bluebook.xml   # docbook.rng needs to be at hand.
+xmlto --skip-validation html bluebook.xml
+or
+xmlto --skip-validation pdf bluebook.xml  # doesn't work
+# Try:
+xsltproc /usr/share/xml/docbook/stylesheet/docbook-xsl-ns/fo/docbook.xsl bluebook.xml > book.fo; fop -fo book.fo -pdf book.pdf
+
+
+convert.sh
+jing /Downloads/docbook-5.0/rng/docbook.rng $1 &&
+xmlto --skip-validation html %1
+
