@@ -3,8 +3,10 @@
 <article xmlns="http://docbook.org/ns/docbook" version="5.0"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          >
-  <info>
-    <title>Pathagar Installation Notes- on VM or Dreamplug</title>
+<info>
+    <title>
+        Pathagar Installation Notes- on Raspberry Pi (+/- Rachel)
+    </title>
     <authorgroup>
       <author>
         <personname>
@@ -22,35 +24,46 @@
         </personname>
         <email>sverma@sfsu.edu</email> 
         </author>
+      <author>
+        <personname>
+          <firstname>Aaron</firstname>
+          <surname>Borden</surname>
+        </personname>
+        <email>adborden@live.com</email> 
+        </author>
     </authorgroup>
-    <abstract>
-    <para>This documents the installation of the
-    <application>Pathagar</application> book server onto a
-    <systemitem>virtual machine</systemitem>
-    (<application>virtualbox</application>.) It includes setting up the 
-    operating system (<systemitem>Ubuntu Server 12.04 LTS</systemitem>) and
-    then installing and configuring the book server. The notes covering the
-    installation and configuration of the book server can be used to install
-    on any <systemitem>Linux</systemitem> computer. We have had experience
-    installing on the following 
-    <trademark>ARM</trademark> based computers:
-    <simplelist>
-    <member>
-    <hardware>SheevaPlug</hardware>
-    </member>
-    <member>
-    <hardware>DreamPlug</hardware>
-    </member>
-    <member>
-    <hardware>Raspberry Pi</hardware>
-    </member>
-    </simplelist>
-    The first two are by 
-    <trademark>GlobalScaleTechnologies</trademark>.
-    </para></abstract>
+<abstract>
+    <para>
+        This documents the installation of the
+        <application>Pathagar</application>
+        book server with in a virtual environment
+        (<application>virtualenv</application>) on to a
+        <systemitem> Raspberry Pi</systemitem>,
+        possibly already running
+        <link xlink:href="http://www.worldpossible.org/pi">
+        <application>Rachel</application>
+        </link>
+        <footnote>
+            <para>
+            What's described at the worldpossible site is their
+            current version which requires a 64 gigabyte sd card.
+            Their original version fit onto a 32 gigabyte sd card.
+            Our use case is for the XO laptop clients which can not 
+            read mp4 video files so these had to be converted to
+            webm format which takes up more space necessitating a 64
+            gigabyte card.  Conversion of the current version would
+            exceed the capacity of a 64 gigabyte card; 128 gigabyte
+            cards, although they do now exist, do not function
+            inside the Raspberry Pi.
+            </para>
+        </footnote>. It includes setting up the <systemitem>
+        Raspberry Pi</systemitem> as it comes <emphasis>out of the box
+        </emphasis>.
+    </para>
+</abstract>
 
     <copyright><year>2012, 2013</year></copyright>
-  </info>
+</info>
 
 <acknowledgements><formalpara><title>Acknowledgements</title><para>
 We wish to express gratitude to those who began, developed and documented
@@ -99,10 +112,13 @@ February 3, 2013, during a Sugar Coding Hackathon Bernie Innocenti helped
 with debugging a Dreamplug using a JTAG connector and subsequently solved a
 recurring permissions problem having to do with the pathagar database file
 directory.  </para>
-<para> Currently the project has been revived by Seth Woodworth and it can
-be found at github.com/PathagarBooks/pathagar.</para>
-<para>
-These are the notes that resulted.  Consider this all to be licensed under a 
+<para> Subsequently the project was revived by Seth Woodworth and moved to
+its <link xlink:href="https://github.com/PathagarBooks/pathagar">
+current github location.</link></para>
+
+<para>This current documentation project also exists
+<link xlink:href="https://github.com/alexKleider/pathagar-docs">
+on github</link> and is licensed under a 
 <link xlink:href="http://creativecommons.org/licenses">
 CreativeCommons</link>
 Attribution-NonCommercial-ShareAlike 3.0 Unported License.

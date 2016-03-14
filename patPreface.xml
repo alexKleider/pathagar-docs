@@ -11,7 +11,7 @@
         <orgname>olpcSF.org</orgname>
     </author>
     <copyright>
-        <year>2014</year>
+        <year>2016</year>
         <holder>Alex Kleider</holder>
     </copyright>
 </info>
@@ -20,18 +20,28 @@
     <title>Copyright Information</title>
     <para>
         This material is released under a 
+
         <link xlink:href="http://creativecommons.org/licenses">
-        CreativeCommons</link> license.
+        CreativeCommons
+        </link>
+
+        license.
     </para>
 </formalpara>
 
 <para>
-    The goal of this document, a project of olpcSF.org, is to provide 
+    The goal of this document, a project of 
+
+    <link xlink:href="http://www.olpcsf.org/">
+    olpcSF.org
+    </link>
+
+    , is to provide 
     helpful documentation of the pathagar book server project and more
     specifically to help with installation, configuration and usage 
-    of this service software on low energy requiring hardware.  We begin
-    with the DreamPlug but hope eventually to gain and report experience
-    with other platforms such as CuBox, TrimSlice, and perhaps others.
+    of this service software on low energy requiring hardware.  We began
+    with the DreamPlug but have since switched to the Raspberry Pi as
+    our device of choice.
 </para>
 
 </preface>

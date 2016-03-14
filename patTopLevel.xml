@@ -2,7 +2,7 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns:xi="http://www.w3.org/2001/XInclude"
     >
-<!-- This file (patHowto.xml) serves only to include component files.
+<!-- This file (patTopLevel.xml) serves only to include component files.
 Each included section is to be an article so that it can be
 independently validated.
 Included components will be named using a descriptive word prefaced by
@@ -17,6 +17,7 @@ as follows:
 
 
     <xi:include href="patPreface.xml"/>
+    <xi:include href="bluebook.xml"/>
 
 
 
