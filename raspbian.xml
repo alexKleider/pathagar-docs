@@ -1,0 +1,96 @@
+<chapter xmlns="http://docbook.org/ns/docbook" 
+        version="5.0"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:id="raspbian"
+    >
+<title>Raspberry Pi Preparation</title>
+<section>
+    <title>Requirements</title>
+    <para>The following will be needed on hand.
+    <itemizedlist>
+        <listitem>
+            <para>A 64 gigabyte sd card.</para>
+        </listitem>
+        <listitem>
+            <para>A <quote>host</quote> computer (i.e. your laptop)
+            with an sd card reader.</para>
+        </listitem>
+        <listitem>
+            <para>A Raspberry Pi (model 2 is preferable but the B is OK)</para>
+        </listitem>
+        <listitem>
+            <para>A microUSB charger >= 2Amp rating.</para>
+        </listitem>
+        <listitem>
+            <para>A USB Wi-fi dongle
+            <footnote><para>
+            Many of the Wi-fi dongles on the market limit the
+            number of clients (often only 5 or 6) making them 
+            unsuitable for server use.  The
+            canakit.com 
+            CanaKit RSP-Pi-WIFI1
+            is not subject to this limit. (We've tested it
+            and found it to work with up to 26 clients.)
+            The price (11.95) is reasonable but shipping is
+            costly so buying in bulk makes sense.
+            </para></footnote></para>
+        </listitem>
+    </itemizedlist>
+    <footnote><para>
+        The CanaKit Pi 2 Starter Kit includes the Pi, a
+        charger and a Wi-fi dongle as well as other things.
+    </para></footnote>
+    </para>
+</section>
+
+<section>
+    <title>Raspbian</title>
+    <para>Using your personal computer (in this context assumed to
+    be a Debian based Linux system) set up a project directory, and
+    beneath that another directory into which to download the image.
+    From within the latter directory, 'wget' the rapbian image. This
+    can all be accomplished with the following commands.
+    <programlisting>
+    <prompt>$ </prompt><userinput>cd</userinput>
+    <prompt>$ </prompt><userinput>mkdir Project</userinput>
+    <prompt>$ </prompt><userinput>cd Project</userinput>
+    <prompt>$ </prompt><userinput>mkdir Images</userinput>
+    <prompt>$ </prompt><userinput>cd Images</userinput>
+    <prompt>$ </prompt><userinput>wget https://downloads.raspberrypi.org/raspbian_latest</userinput>
+    </programlisting>
+    The <link
+    xlink:href="https://www.raspberrypi.org/downloads/raspbian/" >
+    Raspbian download site</link> provides the 
+    <acronym>SHA-1</acronym> (of the form
+    97888fcd9bfbbae2a359b0f1d199850852bf0104)
+    which can be checked using the following command.
+    <programlisting>
+    <prompt>$ </prompt><userinput>sha1 2016-2-26-raspbian-jessie.zip</userinput>
+    </programlisting>
+    To unzip the image:
+    <programlisting>
+    <prompt>$ </prompt><userinput>unzip 2016-2-26-raspbian-jessie.zip</userinput>
+    </programlisting>
+    It is extremely important to know with certainty how your host
+    names your sd card.  This can be assertained by running the
+    mount command before and than again after inserting the card
+    into your computer's card reader.  After insertion there'll
+    be one (or possibly more) extra line(s) of output, the beginning
+    of which will be of the form 
+    <screen>    dev/sdb1 on ....</screen>/.
+    The "/dev/sdb" is the crucial part (without the final integer.)
+    Make a note of it.  If it isn't "/dev/sdb", substitute what ever
+    it is for "/dev/sdb" in the following code.
+    <programlisting>
+    <prompt>$ </prompt><userinput>sudo dd if=~/Project/Images/2016-2-26-raspbian-jessie.img of=/dev/sdb bs=1M</userinput>
+    </programlisting>
+    </para>
+</section>
+</chapter>   <!-- raspbian -->
+<!--
+        <footnote><para>
+            The CanaKit Pi 2 Starter Kit includes the Pi,
+            charger, Wi-fi dongle as well as other things.
+        </para></footnote>
+        https://downloads.raspberrypi.org/raspbian_latest
+-->

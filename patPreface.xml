@@ -4,17 +4,17 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xml:id="preface"
     >
+<title>Preface</title>
 
-<info>
-    <title>Pathagar Documentation Project</title>
-    <author>
-        <orgname>olpcSF.org</orgname>
-    </author>
-    <copyright>
-        <year>2016</year>
-        <holder>Alex Kleider</holder>
-    </copyright>
-</info>
+<para>
+    The goal of this document, a project of 
+    <link xlink:href="http://www.olpcsf.org/"> olpcSF.org</link>,
+    is to provide helpful documentation of the pathagar book
+    server project and more specifically to help with installation,
+    configuration and usage of this service software on low energy
+    requiring hardware.  We began with the DreamPlug but have since
+    switched to the Raspberry Pi as our device of choice.
+</para>
 
 <formalpara>
     <title>Copyright Information</title>
@@ -28,21 +28,41 @@
         license.
     </para>
 </formalpara>
-
-<para>
-    The goal of this document, a project of 
-
-    <link xlink:href="http://www.olpcsf.org/">
-    olpcSF.org
-    </link>
-
-    , is to provide 
-    helpful documentation of the pathagar book server project and more
-    specifically to help with installation, configuration and usage 
-    of this service software on low energy requiring hardware.  We began
-    with the DreamPlug but have since switched to the Raspberry Pi as
-    our device of choice.
-</para>
-
+<!--
+<acknowledgements>
+<formalpara><title>Acknowledgements</title><para>
+We wish to express gratitude to those who began, developed and documented
+the Pathagar project making our use of it possible.</para></formalpara>
+<itemizedlist>
+<listitem><para><personname><firstname>Sayamindu</firstname>
+<surname>Dasgupta</surname></personname>
+<email>sayamindu@gmail.com</email></para>
+</listitem>
+<listitem><para><personname><firstname>Kushal</firstname>
+<surname>Das</surname></personname>
+<email>kushal@fedoraproject.org</email></para>
+</listitem>
+<listitem><para><personname><firstname>Manuel</firstname>
+<surname>Quiñones</surname></personname>
+<email>manuq@laptop.org</email></para>
+</listitem>
+<listitem><para><personname><firstname>James</firstname>
+<surname>Simons</surname></personname></para>
+</listitem>
+<listitem> <para> <personname><firstname>Raj </firstname>
+<surname>Kumar </surname> </personname> 
+<email>raj@archive.org</email> </para>
+</listitem>
+<listitem> <para> <personname><firstname>Bernie </firstname>
+<surname>Innocenti </surname> </personname> 
+<email>bernie@codewiz.org</email> His URL says it all!</para>
+</listitem>
+<listitem> <para> <personname><firstname>Seth </firstname>
+<surname>Woodworth </surname> </personname> 
+<email>seth@laptop.org</email> </para>
+</listitem>
+</itemizedlist>
+</acknowledgements>
+-->
 </preface>
 

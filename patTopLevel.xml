@@ -2,23 +2,71 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns:xi="http://www.w3.org/2001/XInclude"
     >
-<!-- This file (patTopLevel.xml) serves only to include component files.
-Each included section is to be an article so that it can be
-independently validated.
-Included components will be named using a descriptive word prefaced by
-'pat' and ending in '.xml'
-Add an article (each of which will be one of the following:
-preface, an introductory section or chapter and what ever else)
-as follows:
+<info>
+    <title>Pathagar Documentation Project</title>
+    <authorgroup>
+      <author>
+        <personname>
+          <firstname>Alex</firstname>
+          <surname>Kleider</surname>
+        </personname> 
+        <email>akleider@sonic.net</email>
+<!--    <orgname>olpcSF.org</orgname>  -->
+      </author>
+      <author>
+        <personname>
+          <honorific>Prof</honorific>
+          <firstname>Sameer</firstname>
+          <surname>Verma</surname>
+          <lineage>PhD</lineage>
+        </personname>
+        <email>sverma@sfsu.edu</email> 
+        </author>
+      <author>
+        <personname>
+          <firstname>Aaron</firstname>
+          <surname>Borden</surname>
+        </personname>
+        <email>adborden@live.com</email> 
+        </author>
+    </authorgroup>
+    <abstract>
+      <para>
+        This documents the installation of the
+        <application>Pathagar</application>
+        book server with in a virtual environment
+        (<application>virtualenv</application>) on to a
+        <systemitem> Raspberry Pi</systemitem>,
+        possibly already running
+        <link xlink:href="http://www.worldpossible.org/pi">
+        <application>Rachel</application>
+        </link>
+        <footnote>
+            <para>
+            What's described at the worldpossible site is their
+            current version which requires a 64 gigabyte sd card.
+            Their original version fit onto a 32 gigabyte sd card.
+            Our use case is for the XO laptop clients which can not 
+            read mp4 video files so these had to be converted to
+            webm format which takes up more space necessitating a 64
+            gigabyte card.  Conversion of the current version would
+            exceed the capacity of a 64 gigabyte card; 128 gigabyte
+            cards, although they do now exist, do not function
+            inside the Raspberry Pi.
+            </para>
+        </footnote>. It includes setting up the <systemitem>
+        Raspberry Pi</systemitem> as it comes <emphasis>out of the box
+        </emphasis>.
+      </para>
+    </abstract>
+    <copyright>
+        <year>2016</year>
+        <holder>olpcSF</holder>
+    </copyright>
+</info>
 
-    <xi:include href="patTopic.xml/>
-
--->
-
-
-    <xi:include href="patPreface.xml"/>
-    <xi:include href="bluebook.xml"/>
-
+    <xi:include href="patPreface.xml" />
+    <xi:include href="raspbian.xml" />
 
 
 </book>
