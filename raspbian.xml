@@ -56,7 +56,7 @@
     <prompt>$ </prompt><userinput>cd Project</userinput>
     <prompt>$ </prompt><userinput>mkdir Images</userinput>
     <prompt>$ </prompt><userinput>cd Images</userinput>
-    <prompt>$ </prompt><userinput>wget https://downloads.raspberrypi.org/raspbian_latest</userinput>
+    <prompt>$ </prompt><userinput>wget https://downloads.raspberrypi.org/raspbian_lite_latest</userinput>
     </programlisting>
     The <link
     xlink:href="https://www.raspberrypi.org/downloads/raspbian/" >
@@ -65,22 +65,23 @@
     97888fcd9bfbbae2a359b0f1d199850852bf0104)
     which can be checked using the following command.
     <programlisting>
-    <prompt>$ </prompt><userinput>sha1 2016-2-26-raspbian-jessie.zip</userinput>
+    <prompt>$ </prompt><userinput>sha1 2016-2-26-raspbian-jessie-lite.zip</userinput>
     </programlisting>
     To unzip the image:
     <programlisting>
-    <prompt>$ </prompt><userinput>unzip 2016-2-26-raspbian-jessie.zip</userinput>
+    <prompt>$ </prompt><userinput>unzip 2016-2-26-raspbian-jessie-lite.zip</userinput>
     </programlisting>
-    It is extremely important to know with certainty how your host
-    names your sd card.  This can be assertained by running the
-    mount command before and than again after inserting the card
+    It is <emphasis>extremely important </emphasis>to know with
+    certainty how your host names your sd card.  This can be
+    assertained by running the <function>mount </function>
+    command before and than again after inserting the card
     into your computer's card reader.  After insertion there'll
-    be one (or possibly more) extra line(s) of output, the beginning
-    of which will be of the form 
-    <screen>    dev/sdb1 on ....</screen>/.
-    The "/dev/sdb" is the crucial part (without the final integer.)
-    Make a note of it.  If it isn't "/dev/sdb", substitute what ever
-    it is for "/dev/sdb" in the following code.
+    be one (or possibly more) extra line(s) of output of the form 
+    <screen>    dev/sdb1 on /media/alex/mountpoint type ext4 (rw,errors=remount-ro)</screen>
+    The part before the first space but without the trailing
+    integer is the crucial part.  Make a note of it.  If it isn't 
+    <quote>/dev/sdb</quote> as above, substitute what ever
+    it is for <quote>/dev/sdb</quote> in the following code.
     <programlisting>
     <prompt>$ </prompt><userinput>sudo dd if=~/Project/Images/2016-2-26-raspbian-jessie.img of=/dev/sdb bs=1M</userinput>
     </programlisting>
